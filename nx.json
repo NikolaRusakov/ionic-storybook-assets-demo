@@ -1,0 +1,22 @@
+{
+  "npmScope": "rusakov",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "ionic-storybook-assets": {
+      "tags": []
+    },
+    "ionic-storybook-assets-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ionic-storybook-assets"]
+    }
+  }
+}

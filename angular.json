@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "projects": {
+    "ionic-storybook-assets": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/ionic-storybook-assets",
+      "sourceRoot": "apps/ionic-storybook-assets/src",
+      "prefix": "rusakov",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/ionic-storybook-assets",
+            "index": "apps/ionic-storybook-assets/src/index.html",
+            "main": "apps/ionic-storybook-assets/src/main.ts",
+            "polyfills": "apps/ionic-storybook-assets/src/polyfills.ts",
+            "tsConfig": "apps/ionic-storybook-assets/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/ionic-storybook-assets/src/favicon.ico",
+              "apps/ionic-storybook-assets/src/assets"
+            ],
+            "styles": ["apps/ionic-storybook-assets/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ionic-storybook-assets/src/environments/environment.ts",
+                  "with": "apps/ionic-storybook-assets/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ionic-storybook-assets:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ionic-storybook-assets:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ionic-storybook-assets:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/ionic-storybook-assets/tsconfig.app.json",
+              "apps/ionic-storybook-assets/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ionic-storybook-assets/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ionic-storybook-assets/jest.config.js",
+            "tsConfig": "apps/ionic-storybook-assets/tsconfig.spec.json",
+            "setupFile": "apps/ionic-storybook-assets/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ionic-storybook-assets-e2e": {
+      "root": "apps/ionic-storybook-assets-e2e",
+      "sourceRoot": "apps/ionic-storybook-assets-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ionic-storybook-assets-e2e/cypress.json",
+            "tsConfig": "apps/ionic-storybook-assets-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ionic-storybook-assets:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ionic-storybook-assets:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/ionic-storybook-assets-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/ionic-storybook-assets-e2e/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "ionic-storybook-assets"
+}
