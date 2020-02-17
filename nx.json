@@ -1,5 +1,5 @@
 {
-  "npmScope": "rusakov",
+  "npmScope": "app",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
@@ -17,6 +17,9 @@
     "ionic-storybook-assets-e2e": {
       "tags": [],
       "implicitDependencies": ["ionic-storybook-assets"]
+    },
+    "demo-app-ui": {
+      "tags": []
     }
   }
 }

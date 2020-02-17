@@ -10,7 +10,7 @@
       },
       "root": "apps/ionic-storybook-assets",
       "sourceRoot": "apps/ionic-storybook-assets/src",
-      "prefix": "rusakov",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -20,12 +20,19 @@
             "main": "apps/ionic-storybook-assets/src/main.ts",
             "polyfills": "apps/ionic-storybook-assets/src/polyfills.ts",
             "tsConfig": "apps/ionic-storybook-assets/tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
-              "apps/ionic-storybook-assets/src/favicon.ico",
-              "apps/ionic-storybook-assets/src/assets"
+              {
+                "glob": "**/*",
+                "input": "apps/ionic-storybook-assets/src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "apps/ionic-storybook-assets/src/assets/icons",
+                "output": "./svg"
+              }
             ],
-            "styles": ["apps/ionic-storybook-assets/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -83,7 +90,10 @@
               "apps/ionic-storybook-assets/tsconfig.app.json",
               "apps/ionic-storybook-assets/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/ionic-storybook-assets/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/ionic-storybook-assets/**"
+            ]
           }
         },
         "test": {
@@ -117,11 +127,71 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/ionic-storybook-assets-e2e/tsconfig.e2e.json"],
+            "tsConfig": [
+              "apps/ionic-storybook-assets-e2e/tsconfig.e2e.json"
+            ],
             "exclude": [
               "**/node_modules/**",
               "!apps/ionic-storybook-assets-e2e/**"
             ]
+          }
+        }
+      }
+    },
+    "demo-app-ui": {
+      "root": "libs/demo-app//ui",
+      "sourceRoot": "libs/demo-app/ui/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/demo-app/ui/tsconfig.lib.json",
+              "libs/demo-app/ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/demo-app/ui/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/demo-app/ui/jest.config.js",
+            "tsConfig": "libs/demo-app/ui/tsconfig.spec.json"
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/demo-app/ui/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/demo-app-ui",
+            "config": {
+              "configFolder": "libs/demo-app/ui/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
           }
         }
       }
