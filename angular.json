@@ -2,15 +2,16 @@
   "version": 1,
   "projects": {
     "ionic-storybook-assets": {
+      "root": "apps/ionic-storybook-assets/",
+      "sourceRoot": "apps/ionic-storybook-assets/src",
+      "prefix": "app",
       "projectType": "application",
       "schematics": {
         "@nrwl/angular:component": {
-          "style": "scss"
+          "styleext": "scss",
+          "changeDetection": "OnPush"
         }
       },
-      "root": "apps/ionic-storybook-assets",
-      "sourceRoot": "apps/ionic-storybook-assets/src",
-      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -33,7 +34,10 @@
                 "output": "./svg"
               }
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/ionic-storybook-assets/src/styles"]
+            }
           },
           "configurations": {
             "production": {

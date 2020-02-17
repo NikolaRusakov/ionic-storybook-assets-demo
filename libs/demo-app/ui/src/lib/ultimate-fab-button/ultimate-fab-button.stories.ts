@@ -1,15 +1,15 @@
 import { storiesOf } from '@storybook/angular';
-import { text, date, boolean } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs';
 import { UltimateFabButtonModule } from './ultimate-fab-button.module';
 import { UltimateFabButtonComponent } from './ultimate-fab-button.component';
 
-storiesOf('Main Slider stories', module).add('Main Slider', () => ({
+storiesOf('Toggle Icon Ionic story', module).add('Dynamic icon Demo', () => ({
   moduleMetadata: {
     imports: [UltimateFabButtonModule],
   },
   component: UltimateFabButtonComponent,
   props: {
     icon:
-      text('Icon toggle', 'searching')
+      text('Rename to "search" and see network tab, remote cdn asset loads', 'searching')
   },
 }));
