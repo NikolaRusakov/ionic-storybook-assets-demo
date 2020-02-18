@@ -1,0 +1,7 @@
+{
+  "name": "ionic-storybook-assets",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
