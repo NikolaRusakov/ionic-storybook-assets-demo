@@ -1,1 +1,1 @@
-// export * from './lib/ultimate-fab-button';
+export * from './lib/ultimate-fab-button/ultimate-fab-button.module';

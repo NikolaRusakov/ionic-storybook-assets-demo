@@ -35,6 +35,10 @@
               }
             ],
             "scripts": [],
+            "styles": [{
+              "input": "apps/ionic-storybook-assets/src/styles/global.scss"
+            }
+            ],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/ionic-storybook-assets/src/styles"]
             }
