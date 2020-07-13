@@ -186,7 +186,7 @@
     "serverless-apigw-binary": "^0.4.4",
     "serverless-offline": "^4.10.0",
     "serverless-plugin-typescript": "^1.1.7",
-    "standard-version": "~7.0.0",
+    "standard-version": "~8.0.1",
     "stylelint": "~10.1.0",
     "ts-jest": "~24.1.0",
     "ts-node": "~8.3.0",
