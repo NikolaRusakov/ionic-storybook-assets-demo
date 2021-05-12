@@ -94,7 +94,7 @@
     "serverless-plugin-tracing": "^2.0.0",
     "serverless-pseudo-parameters": "^2.5.0",
     "smoothscroll-polyfill": "^0.4.4",
-    "swiper": "^5.2.1",
+    "swiper": "^6.5.1",
     "tealium-cordova-plugin": "~1.1.2",
     "zone.js": "~0.9.1"
   },
